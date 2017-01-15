@@ -1,0 +1,1 @@
+console.log('This is default template');

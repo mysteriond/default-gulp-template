@@ -1,0 +1,37 @@
+{
+  "name": "default-gulp-template",
+  "version": "1.0.1",
+  "description": "My initial gulp template",
+  "main": "index.js",
+  "author": "mysterion141",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "latest",
+    "gulp-autoprefixer": "latest",
+    "gulp-cache": "latest",
+    "gulp-clean-css": "latest",
+    "gulp-concat": "latest",
+    "gulp-filter": "latest",
+    "gulp-html-prettify": "latest",
+    "gulp-imagemin": "latest",
+    "gulp-inject": "latest",
+    "gulp-notify": "latest",
+    "gulp-order": "latest",
+    "gulp-rename": "latest",
+    "gulp-sass": "latest",
+    "gulp-strip-css-comments": "latest",
+    "gulp-uglify": "latest",
+    "gulp-watch": "latest",
+    "browser-sync": "latest",
+    "del": "latest",
+    "gulp.spritesmith": "latest",
+    "imagemin-pngquant": "latest",
+    "main-bower-files": "latest",
+    "merge-stream": "latest",
+    "run-sequence": "latest"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "bower install -S jquery#1.9.1 reset-css respond html5shiv es5-shim breakpoint-sass "
+  }
+}
