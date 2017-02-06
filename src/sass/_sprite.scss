@@ -1,0 +1,49 @@
+$s-calendar-width: 48px;
+$s-calendar-height: 48px;
+$s-calendar: (108px, 0px, -108px, 0px, 48px, 48px, 156px, 105px, '../images/sprite.png', 'sCalendar', );
+$s-idea-width: 48px;
+$s-idea-height: 48px;
+$s-idea: (108px, 51px, -108px, -51px, 48px, 48px, 156px, 105px, '../images/sprite.png', 'sIdea', );
+$s-key-filled-width: 50px;
+$s-key-filled-height: 50px;
+$s-key-filled: (55px, 0px, -55px, 0px, 50px, 50px, 156px, 105px, '../images/sprite.png', 'sKeyFilled', );
+$s-news-filled-width: 50px;
+$s-news-filled-height: 50px;
+$s-news-filled: (0px, 55px, 0px, -55px, 50px, 50px, 156px, 105px, '../images/sprite.png', 'sNewsFilled', );
+$s-toolbox-filled-width: 50px;
+$s-toolbox-filled-height: 50px;
+$s-toolbox-filled: (53px, 55px, -53px, -55px, 50px, 50px, 156px, 105px, '../images/sprite.png', 'sToolboxFilled', );
+$s-user-male-width: 52px;
+$s-user-male-height: 52px;
+$s-user-male: (0px, 0px, 0px, 0px, 52px, 52px, 156px, 105px, '../images/sprite.png', 'sUserMale', );
+$spritesheet-sprites: ($s-calendar, $s-idea, $s-key-filled, $s-news-filled, $s-toolbox-filled, $s-user-male, );
+$spritesheet: (156px, 105px, '../images/sprite.png', $spritesheet-sprites, );
+@mixin sprite-width($sprite) {
+  width: nth($sprite, 5);
+}
+@mixin sprite-height($sprite) {
+  height: nth($sprite, 6);
+}
+@mixin sprite-position($sprite) {
+  $sprite-offset-x: nth($sprite, 3);
+  $sprite-offset-y: nth($sprite, 4);
+  background-position: $sprite-offset-x  $sprite-offset-y;
+}  
+@mixin sprite-image($sprite) {
+  $sprite-image: nth($sprite, 9);
+  background-image: url(#{$sprite-image});
+}
+@mixin sprite($sprite) {
+  @include sprite-image($sprite);
+  @include sprite-position($sprite);
+  @include sprite-width($sprite);
+  @include sprite-height($sprite);
+}  
+@mixin sprites($sprites) {
+  @each $sprite in $sprites {
+    $sprite-name: nth($sprite, 10);
+    .#{$sprite-name} {
+      @include sprite($sprite);
+    }
+  }    
+}

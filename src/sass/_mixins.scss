@@ -1,0 +1,78 @@
+/*###################font-face Mixin for SASS##################*/
+/**
+ * String Replace Function
+ * @param $string
+ * @param $search
+ * @param $replace [""]
+ */
+@function str-replace($string, $search, $replace: "") {
+    $index: str-index($string, $search);
+    @if $index {
+        @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+    }
+    @return $string;
+}
+
+/**
+ * SCSS @font-face mixin
+ * @param $name - font-family
+ * @param $path - URL to fonts
+ * @param $weight [null] - font-weight
+ * @param $style [null] - font-style
+ * @param $exts [eot woff2 woff ttf svg] - font extensions to add to src
+ */
+@mixin font-face($name, $path, $weight: null, $style: null, $exts: eot woff2 woff ttf svg) {
+    $src: null;
+    $extmods: ( eot: "?", svg: "#" + str-replace($name, " ", "_"));
+    $formats: ( otf: "opentype", ttf: "truetype");
+    @each $ext in $exts {
+        $extmod: if(map-has-key($extmods, $ext), $ext + map-get($extmods, $ext), $ext);
+        $format: if(map-has-key($formats, $ext), map-get($formats, $ext), $ext);
+        $src: append($src, url(quote($path + "." + $extmod)) format(quote($format)), comma);
+    }
+    @font-face {
+        font-family: quote($name);
+        font-style: $style;
+        font-weight: $weight;
+        src: $src;
+    }
+}
+
+/*###################font-face Mixin for SASS##################*/
+/**
+* SCSS sticky-footer mixin
+* @param $footer-height
+* @param $wrapper-selector
+* @param $footer-selector
+*/
+@mixin sticky-footer($footer-height, $wrapper-selector: unquote("#page-wrap"), $footer-selector: unquote("#footer")) {
+    html, body {
+        height: 100%;
+    }
+    body {
+        margin: 0;
+        padding: 0;
+    }
+    #{$wrapper-selector} {
+        clear: both;
+        min-height: 100%;
+        height: auto !important;
+        height: 100%;
+        margin-bottom: -$footer-height;
+        padding-bottom: $footer-height;
+        box-sizing: border-box;
+        &:before {
+            content: "";
+            overflow: hidden; 
+            display: block;
+        }
+    }
+    #{$footer-selector} {
+        height: $footer-height;
+        &:before {
+            content: "";
+            overflow: hidden; 
+            display: block;
+        }
+    }
+}

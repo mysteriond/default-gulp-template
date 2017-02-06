@@ -1,66 +1,86 @@
-
-
-
+/*###################font-face Mixin for SASS##################*/
+/**
+ * String Replace Function
+ * @param $string
+ * @param $search
+ * @param $replace [""]
+ */
+/**
+ * SCSS @font-face mixin
+ * @param $name - font-family
+ * @param $path - URL to fonts
+ * @param $weight [null] - font-weight
+ * @param $style [null] - font-style
+ * @param $exts [eot woff2 woff ttf svg] - font extensions to add to src
+ */
+/*###################font-face Mixin for SASS##################*/
+/**
+* SCSS sticky-footer mixin
+* @param $footer-height
+* @param $wrapper-selector
+* @param $footer-selector
+*/
 html, body {
-  height: 100%; }
+  height: 100%;
+}
 
 body {
-  margin: 0px;
-  padding: 0px; }
+  margin: 0;
+  padding: 0;
+}
 
 #wrapper {
+  clear: both;
   min-height: 100%;
   height: auto !important;
   height: 100%;
-  margin-top: 0;
   margin-bottom: -30px;
-  margin-left: auto;
-  margin-right: auto; }
-  #wrapper #global-container {
-    padding: 0 0 30px 0; }
+  padding-bottom: 30px;
+  box-sizing: border-box;
+}
+
+#wrapper:before {
+  content: "";
+  overflow: hidden;
+  display: block;
+}
 
 #footer {
-  height: 30px; }
+  height: 30px;
+}
+
+#footer:before {
+  content: "";
+  overflow: hidden;
+  display: block;
+}
 
 @font-face {
   font-family: "Roboto";
   font-style: normal;
   font-weight: 400;
-  src: url("../fonts/RobotoRegular.eot?") format("eot"), url("../fonts/RobotoRegular.woff") format("woff"), url("../fonts/RobotoRegular.ttf") format("truetype"); }
+  src: url("../fonts/RobotoRegular.eot?") format("eot"), url("../fonts/RobotoRegular.woff") format("woff"), url("../fonts/RobotoRegular.ttf") format("truetype");
+}
 
 body {
-  font-family: 'Roboto', sans-serif; }
-
-#wrapper {
-  background-image: url("../img/background.jpg");
-  background-position: top left;
-  background-size: 100% auto;
-  background-repeat: no-repeat; }
+  font-family: 'Roboto', sans-serif;
+}
 
 h1 {
   font-size: 24px;
   text-transform: uppercase;
-  text-align: center; }
-
-#nav {
-  background: #009dff; }
-  #nav ul {
-    margin: 0;
-    padding: 0;
-    text-align: center; }
-    #nav ul > li {
-      display: inline-block;
-      list-style: none; }
-      #nav ul > li > a {
-        color: #fff;
-        text-decoration: none;
-        padding: 6px 12px;
-        display: inline-block; }
-        #nav ul > li > a:hover {
-          text-decoration: underline; }
+  text-align: center;
+  position: relative;
+}
 
 #footer {
   text-align: center;
-  background: #7CB0E0;
+  background: #e4e4e4;
   color: #444;
-  line-height: 30px; }
+  line-height: 30px;
+}
+
+#footer p {
+  margin: 0;
+  padding: 0;
+}
