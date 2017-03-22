@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru">
+{% if not title %}
+    {% set title = 'Default Template' %}
+{% endif %}
+{% block head %}
+<head>
+    {% include "templates/parts/_HEAD.html"  %}
+</head>
+{% endblock %}
+{% block body %}
+<body>
+    {% block header %}
+    <header>
+    </header>
+    {% endblock %}
+    {% block main %}
+    <main>
+    {% block content %}
+    {% endblock %}
+    </main>
+    {% endblock %}
+    {% block footer %}
+    <footer>
+    </footer>
+    {% endblock %}
+    {% block modals %}
+    {% endblock %}
+    {% block scripts %}
+    {% endblock %}
+</body>
+{% endblock %}
+</html>

@@ -1,7 +1,7 @@
 @import 'sprite';
 @import 'mixins';
-@include sticky-footer(30px, '#wrapper', '#footer');
 @include font-face('Roboto', '../fonts/RobotoRegular', 400, normal, eot woff ttf);
+
 body {
     font-family: 'Roboto', sans-serif;
 }
@@ -10,15 +10,4 @@ h1 {
     text-transform: uppercase;
     text-align: center;
     position: relative;
-}
-
-#footer {
-    p {
-        margin: 0;
-        padding: 0;
-    }
-    text-align: center;
-    background: #e4e4e4;
-    color: #444;
-    line-height: 30px;
 }

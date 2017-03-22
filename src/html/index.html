@@ -1,20 +1,26 @@
-<!DOCTYPE html>
-<html>
+{% set title = 'Main Page' %}
+{% extends "templates/base.html" %}
 
-<head>
-    <!-- inject:templates/_head.html -->
-</head>
+{% block header %}
+<nav class="uk-navbar">
+    <ul class="uk-navbar-nav uk-hidden-small uk-navbar-attached">
+        <li class="uk-active"><a href="">Active</a></li>
+        <li><a href="">Item</a></li>
+        <li class="uk-parent"><a href="">Parent</a></li>
+    </ul>
+    <a href="#my-id" class="uk-navbar-toggle uk-visible-small"></a>
+</nav>
+{% endblock %}
 
-<body>
-    <div id="wrapper">
-        <nav>
-            <!-- inject:templates/_nav.html -->
-        </nav>
-        <div class="container">
-            <h1>Default Template</h1>
-        </div>
+{% block content %}
+    <h1>Test</h1>
+    {% for item in items %}
+        {% include "templates/parts/item.html"  %}
+    {% endfor %}
+    <div class="uk-container uk-container-center">
+    <div class="uk-grid">
+        <div class="uk-width-small-1-2">Test1</div>
+        <div class="uk-width-small-1-2">Test2</div>
     </div>
-    <!-- inject:templates/_footer.html -->
-</body>
-
-</html>
+    </div>
+{% endblock %}
